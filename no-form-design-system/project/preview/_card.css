@@ -1,0 +1,47 @@
+/* Shared card frame for preview cards.
+   Each card is rendered ~700px wide on a dark page background.
+   Keep cards visually quiet — the asset name is shown OUTSIDE
+   the card by the host, so no titles inside. */
+
+@import url("../colors_and_type.css");
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-1);
+  color: var(--fg-0);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  padding: 28px 32px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  border: 1px solid var(--border-1);
+}
+
+/* Re-usable preview helpers */
+.row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.col { display: flex; flex-direction: column; gap: 6px; }
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-3);
+  letter-spacing: 0.04em;
+}
+.swatch {
+  width: 56px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 6px 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--fg-2);
+  border: 1px solid var(--border-1);
+}

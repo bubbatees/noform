@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NO FORM</title>
+
+  <!-- Standalone-bundle resource manifest. The super_inline_html bundler
+       inlines each of these and populates window.__resources[id] with a blob
+       URL. screens.jsx reads them via NFAsset(filename). -->
+  <meta name="ext-resource-dependency" content="../../assets/imagery/hero.jpeg"                  data-resource-id="img_hero_jpeg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/service-ad-creatives.jpg"  data-resource-id="img_service_ad_creatives_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/service-video-creatives.jpg" data-resource-id="img_service_video_creatives_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/service-web-design.jpg"    data-resource-id="img_service_web_design_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/service-email-sms.jpg"     data-resource-id="img_service_email_sms_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/service-product-cards.jpg" data-resource-id="img_service_product_cards_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/service-ai-ugc.jpg"        data-resource-id="img_service_ai_ugc_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/carousel-1.jpg"            data-resource-id="img_carousel_1_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/carousel-2.jpg"            data-resource-id="img_carousel_2_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/carousel-3.jpg"            data-resource-id="img_carousel_3_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/founder-will.jpg"          data-resource-id="img_founder_will_jpg"/>
+  <meta name="ext-resource-dependency" content="../../assets/imagery/founder-alex.jpg"          data-resource-id="img_founder_alex_jpg"/>
+
+  <link rel="stylesheet" href="../../colors_and_type.css"/>
+  <style>
+    html, body { margin: 0; padding: 0; background: #0A0A0A; }
+    body { font-family: var(--font-body); color: var(--fg-0); -webkit-font-smoothing: antialiased; }
+    ::selection { background: var(--accent); color: var(--bg-0); }
+    *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  </style>
+
+  <!-- Splash / no-JS fallback for the bundled output -->
+  <template id="__bundler_thumbnail" data-bg-color="#0A0A0A">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#0A0A0A"/>
+      <text x="600" y="430"
+            text-anchor="middle"
+            font-family="Helvetica, Arial, sans-serif"
+            font-size="84"
+            letter-spacing="28"
+            fill="#FFFFFF">NO  FORM</text>
+      <line x1="500" y1="490" x2="700" y2="490" stroke="#FF6B2C" stroke-width="2"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="screens.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+</body>
+</html>

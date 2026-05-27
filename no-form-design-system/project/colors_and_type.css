@@ -1,0 +1,293 @@
+/* ============================================================
+   NO FORM — Colors & Type
+   Editorial. Dark. Cinematic. Fashion-magazine grotesque.
+   ============================================================ */
+
+/* ---- FONTS --------------------------------------------------
+   Primary: Inter Tight (Google Fonts) — closest free match to
+   the editorial grotesque used in the brand reference. If the
+   user later supplies a licensed face (e.g. PP Neue Montreal,
+   Neue Haas Grotesk Display), swap @import + --font-display.
+   ------------------------------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* ===== COLOR — RAW =====
+     Black-on-black system. Surfaces step up by ~6% lightness.
+     Used for the deep editorial canvas. */
+  --nf-black:        #000000;   /* Hero / full-bleed media wells */
+  --nf-ink:          #0A0A0A;   /* Page background */
+  --nf-graphite:     #141414;   /* Section bands */
+  --nf-shadow:       #1A1A1A;   /* Cards, tiles */
+  --nf-slate:        #242424;   /* Hovered cards, inputs */
+  --nf-iron:         #2E2E2E;   /* Pressed / active surfaces */
+
+  --nf-bone:         #FFFFFF;   /* Primary text / wordmark */
+  --nf-paper:        #F4F4F2;   /* Inverted surface, rare */
+  --nf-fog:          #B5B5B5;   /* Body text on dark */
+  --nf-mist:         #8A8A8A;   /* Tertiary text, captions */
+  --nf-smoke:        #5C5C5C;   /* Eyebrows, dim labels */
+  --nf-coal:         #3A3A3A;   /* Dividers, disabled */
+
+  /* The hero accent. Pulled from the rim-light/fire imagery.
+     Used sparingly — UI is monochromatic; ember accents
+     belong to imagery, focus rings, hot moments. */
+  --nf-ember:        #FF6B2C;   /* Primary accent — fire */
+  --nf-ember-soft:   #FF8F5C;
+  --nf-amber:        #F2B53A;   /* Secondary warm */
+  --nf-glow:         #FFD49A;   /* Highlight bloom */
+
+  /* Semantic */
+  --nf-success:      #6BD58A;
+  --nf-warn:         #F2B53A;
+  --nf-danger:       #FF5247;
+
+  /* ===== COLOR — SEMANTIC ===== */
+  --bg-0:            var(--nf-black);
+  --bg-1:            var(--nf-ink);
+  --bg-2:            var(--nf-graphite);
+  --bg-3:            var(--nf-shadow);
+  --bg-4:            var(--nf-slate);
+  --bg-hover:        var(--nf-iron);
+
+  --fg-0:            var(--nf-bone);
+  --fg-1:            var(--nf-fog);
+  --fg-2:            var(--nf-mist);
+  --fg-3:            var(--nf-smoke);
+  --fg-disabled:     var(--nf-coal);
+
+  --border-1:        rgba(255, 255, 255, 0.08);  /* hairline */
+  --border-2:        rgba(255, 255, 255, 0.16);  /* button/card */
+  --border-3:        rgba(255, 255, 255, 0.32);  /* focused */
+  --border-strong:   rgba(255, 255, 255, 0.6);
+
+  --accent:          var(--nf-ember);
+  --accent-soft:     var(--nf-ember-soft);
+
+  /* ===== TYPE — FAMILIES ===== */
+  --font-display:    "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body:       "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:       "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ===== TYPE — SCALE =====
+     Editorial: very large display, small steady body. */
+  --fs-display-xl:   clamp(56px, 7.5vw, 112px);   /* hero "Efficiency meets taste." */
+  --fs-display-lg:   clamp(40px, 5vw, 72px);
+  --fs-display-md:   clamp(32px, 3.5vw, 48px);    /* section openers */
+  --fs-h1:           36px;
+  --fs-h2:           28px;
+  --fs-h3:           22px;
+  --fs-h4:           18px;
+  --fs-body-lg:      18px;
+  --fs-body:         16px;
+  --fs-body-sm:      14px;
+  --fs-caption:      13px;
+  --fs-eyebrow:      11px;   /* uppercase tracked labels */
+  --fs-micro:        10px;
+
+  /* ===== TYPE — WEIGHTS ===== */
+  --fw-light:        300;
+  --fw-regular:      400;
+  --fw-medium:       500;
+  --fw-semibold:     600;
+  --fw-bold:         700;
+
+  /* ===== TYPE — TRACKING =====
+     Tracked caps are core to the visual language. */
+  --tracking-tight:  -0.02em;   /* large display */
+  --tracking-normal: 0;
+  --tracking-wide:   0.08em;    /* small uppercase labels */
+  --tracking-xwide:  0.22em;    /* nav, eyebrows, wordmark */
+  --tracking-xxwide: 0.34em;    /* wordmark hero */
+
+  /* ===== TYPE — LEADING ===== */
+  --lh-display:      1.02;
+  --lh-tight:        1.15;
+  --lh-snug:         1.3;
+  --lh-body:         1.55;
+  --lh-loose:        1.75;
+
+  /* ===== SPACING ===== */
+  --s-1:   4px;
+  --s-2:   8px;
+  --s-3:   12px;
+  --s-4:   16px;
+  --s-5:   24px;
+  --s-6:   32px;
+  --s-7:   48px;
+  --s-8:   64px;
+  --s-9:   96px;
+  --s-10:  128px;
+  --s-11:  192px;
+
+  /* ===== RADII =====
+     Sharp. The brand is rectangular and architectural.
+     Default to 0; use small radius only for inputs/pills. */
+  --r-0:   0px;
+  --r-1:   2px;
+  --r-2:   4px;
+  --r-3:   8px;
+  --r-pill: 999px;
+
+  /* ===== SHADOWS =====
+     Minimal. Dark-on-dark relies on borders + surface lift,
+     not glow. Drop shadows used only for floating overlays. */
+  --shadow-0: none;
+  --shadow-1: 0 1px 0 rgba(255,255,255,0.04) inset;
+  --shadow-2: 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-3: 0 24px 64px rgba(0,0,0,0.65);
+  --shadow-focus: 0 0 0 2px var(--nf-ember);
+
+  /* ===== MOTION ===== */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast: 120ms;
+  --t-med: 220ms;
+  --t-slow: 420ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE PRESETS — apply by selector or .class
+   ============================================================ */
+
+.nf-wordmark,
+.t-wordmark {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: 18px;
+  letter-spacing: var(--tracking-xxwide);
+  text-transform: uppercase;
+  color: var(--fg-0);
+}
+
+.t-display-xl, h1.display, .nf-hero {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-display-xl);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-0);
+}
+
+.t-display-lg {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-display-lg);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-0);
+}
+
+.t-display-md, h2.display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-display-md);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-0);
+}
+
+h1, .t-h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-0);
+}
+
+h2, .t-h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-tight);
+  color: var(--fg-0);
+}
+
+h3, .t-h3 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--fg-0);
+}
+
+h4, .t-h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  color: var(--fg-0);
+}
+
+p, .t-body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+}
+
+.t-body-lg {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+}
+
+.t-body-sm {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+}
+
+.t-caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-snug);
+  color: var(--fg-2);
+}
+
+/* THE signature element. Used everywhere: nav, eyebrows,
+   tile titles, button labels. */
+.t-eyebrow,
+.t-label {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-eyebrow);
+  line-height: 1;
+  letter-spacing: var(--tracking-xwide);
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.t-tile-title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-0);
+}
+
+code, .t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  color: var(--fg-1);
+}
+
+/* ============================================================
+   GLOBAL RESET — opt-in helpers
+   ============================================================ */
+.nf-page {
+  background: var(--bg-1);
+  color: var(--fg-0);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
