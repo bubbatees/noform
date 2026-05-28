@@ -153,13 +153,13 @@
 
     #root { min-height: 100vh; }
 
-    /* ── Hero: cap image at 50vw on wide screens ── */
+    /* ── Hero: cap image at 60% device screen width on wide screens ── */
     @media (min-width: 48em) {
       .hero-bg {
         top: 0 !important; bottom: 0 !important;
         left: 50% !important; right: auto !important;
         transform: translateX(-50%) !important;
-        width: 50vw !important;
+        width: min(60vw, var(--screen-w60, 60vw)) !important;
         background-position: center center !important;
       }
     }
@@ -188,17 +188,25 @@
       .grid-3col-sm { grid-template-columns: 1fr !important; }
     }
 
-    /* ── Nav: two-row stack on mobile ── */
+    /* ── Nav: stack on mobile, center wordmark ── */
     @media (max-width: 780px) {
       .nf-nav {
+        display: flex !important;
         flex-direction: column !important;
-        align-items: flex-start !important;
+        align-items: center !important;
         gap: 12px !important;
         padding: 14px 24px !important;
+      }
+      .nav-spacer {
+        display: none !important;
+      }
+      .nav-cta {
+        justify-content: center !important;
       }
       .nav-links {
         gap: 16px !important;
         flex-wrap: wrap !important;
+        justify-content: center !important;
       }
     }
 
@@ -404,7 +412,7 @@
       return (
         <nav className="nf-nav" style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-          display: "flex", alignItems: "center", justifyContent: "space-between",
+          display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center",
           padding: "22px clamp(24px, 4vw, 48px)",
           background: scrolled ? "rgba(0,0,0,0.6)" : "transparent",
           backdropFilter: scrolled ? "blur(20px)" : "none",
@@ -420,7 +428,7 @@
             <Wordmark />
           </a>
 
-          <div className="nav-links" style={{ display: "flex", gap: 40, alignItems: "center" }}>
+          <div className="nav-links" style={{ display: "flex", gap: 40, alignItems: "center", justifyContent: "center" }}>
             {items.map(it => (
               <a key={it.id}
                 href={`#${it.id}`}
@@ -436,6 +444,9 @@
                 onMouseLeave={(e) => e.currentTarget.style.color = current === it.id ? "var(--fg-0)" : "var(--fg-1)"}
               >{it.label}</a>
             ))}
+          </div>
+
+          <div className="nav-cta" style={{ display: "flex", justifyContent: "flex-end" }}>
             <Button onClick={onBriefOpen}>Let's create</Button>
           </div>
         </nav>
@@ -695,6 +706,9 @@
 
     const Hero = ({ onBriefOpen, headline = "Efficiency meets taste.", sub = "AI-enhanced creative production with human direction." }) => {
       const lines = headline.split("\n");
+      React.useEffect(() => {
+        document.documentElement.style.setProperty('--screen-w60', Math.round(window.screen.width * 0.6) + 'px');
+      }, []);
       return (
         <section className="hero-section" style={{
           position: "relative",
@@ -800,8 +814,8 @@
 
     const ServicesSection = () => (
       <section style={{ padding: "120px clamp(24px, 4vw, 48px)", background: "var(--bg-1)" }}>
-        <div style={{ marginBottom: 56 }}>
-          <EyebrowHeadline eyebrow="What we make" headline="Our services." align="center"/>
+        <div style={{ marginBottom: 56, textAlign: "center" }}>
+          <Eyebrow>What we make</Eyebrow>
         </div>
         <div className="grid-3col">
           {SERVICES.map((s, i) => (
