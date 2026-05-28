@@ -1068,7 +1068,7 @@
       <main>
         <PageHeader eyebrow="Products" title="Six surfaces. One studio." sub="Pick a service or the whole shop. Each one ships under the same direction, same polish, same monthly rhythm."/>
         <section style={{ padding: "0 clamp(24px, 4vw, 48px) 120px", background: "var(--bg-1)" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: 24, maxWidth: 1400, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(360px, 100%), 1fr))", gap: 24, maxWidth: 1400, margin: "0 auto" }}>
             {SERVICES.map((s, i) => (
               <ProductDetailRow key={i} {...s} idx={String(i + 1).padStart(2, "0")}/>
             ))}
@@ -1307,7 +1307,7 @@
         <PageHeader eyebrow="About us" title="Two operators. One pipeline."
           sub="No Form is run by two people. We do not subcontract creative direction. We do not white-label."/>
         <section style={{ padding: "0 clamp(24px, 4vw, 48px) 120px", background: "var(--bg-1)" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: 24, maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(360px, 100%), 1fr))", gap: 24, maxWidth: 1280, margin: "0 auto" }}>
             <FounderCard
               img="founder-will.jpg"
               name="Will"
