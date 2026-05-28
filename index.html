@@ -153,15 +153,14 @@
 
     #root { min-height: 100vh; }
 
-    /* ── Hero: fixed 1500px image width on wide screens ── */
-    @media (min-width: 48em) {
-      .hero-bg {
-        top: 0 !important; bottom: 0 !important;
-        left: 50% !important; right: auto !important;
-        transform: translateX(-50%) !important;
-        width: 1500px !important;
-        background-position: center center !important;
-      }
+    /* ── Hero image: always centered, capped at 1800px ── */
+    .hero-bg {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%; right: auto;
+      transform: translateX(-50%);
+      width: min(100vw, 1800px);
+      background-position: center center;
     }
 
     /* ── Services / Portfolio grids: max 3 cols ── */
@@ -718,10 +717,8 @@
           display: "flex", flexDirection: "column", justifyContent: "center",
         }}>
           <div className="hero-bg" style={{
-            position: "absolute", inset: 0,
             backgroundImage: "url(assets/imagery/hero.jpeg)",
             backgroundSize: "cover",
-            backgroundPosition: "center right",
           }}/>
           <div style={{
             position: "absolute", inset: 0,
