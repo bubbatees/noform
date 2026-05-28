@@ -209,6 +209,12 @@
       }
     }
 
+    /* ── Hero / Services spacing on mobile ── */
+    @media (max-width: 780px) {
+      .hero-section  { padding-top: 130px !important; }
+      .services-section { padding-top: 72px !important; }
+    }
+
     /* ── Carousel: single full-width image on mobile ── */
     @media (max-width: 700px) {
       .carousel-grid { grid-template-columns: 1fr !important; }
@@ -807,7 +813,7 @@
     };
 
     const ServicesSection = () => (
-      <section style={{ padding: "120px clamp(24px, 4vw, 48px)", background: "var(--bg-1)" }}>
+      <section className="services-section" style={{ padding: "120px clamp(24px, 4vw, 48px)", background: "var(--bg-1)" }}>
         <div style={{ marginBottom: 56, textAlign: "center" }}>
           <Eyebrow>What we make</Eyebrow>
         </div>
