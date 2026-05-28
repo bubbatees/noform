@@ -154,7 +154,7 @@
     #root { min-height: 100vh; }
 
     /* ── Hero: cap image at 50vw on wide screens ── */
-    @media (min-width: 1200px) {
+    @media (min-width: 48em) {
       .hero-bg {
         top: 0 !important; bottom: 0 !important;
         left: 50% !important; right: auto !important;
@@ -209,7 +209,7 @@
     }
 
     /* ── À la carte: single column on mobile ── */
-    @media (max-width: 640px) {
+    @media (max-width: 800px) {
       .alacarte-grid { grid-template-columns: 1fr !important; }
       .alacarte-row  { border-right: none !important; }
     }
@@ -698,7 +698,7 @@
       return (
         <section className="hero-section" style={{
           position: "relative",
-          height: "60vh", minHeight: "380px",
+          height: "75vh", minHeight: "420px",
           paddingTop: "clamp(70px, 8vh, 100px)",
           paddingLeft: "clamp(24px, 4vw, 48px)",
           paddingRight: "clamp(24px, 4vw, 48px)",
