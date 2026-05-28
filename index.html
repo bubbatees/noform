@@ -895,11 +895,11 @@
             position: "relative", display: "flex", alignItems: "center",
             gap: 24, padding: "0 clamp(24px, 4vw, 48px)",
           }}>
-            <IconButton onClick={prev} ariaLabel="Previous" size={56}>←</IconButton>
+            <IconButton onClick={prev} ariaLabel="Previous" size={36}>←</IconButton>
 
             <div className="carousel-grid" style={{
               flex: 1,
-              display: "grid", gridTemplateColumns: "1fr 1.6fr 1fr", gap: 20,
+              display: "grid", gridTemplateColumns: "0.6fr 2fr 0.6fr", gap: 20,
               alignItems: "center",
             }}>
               {[-1, 0, 1].map(off => {
@@ -920,7 +920,7 @@
               })}
             </div>
 
-            <IconButton onClick={next} ariaLabel="Next" size={56}>→</IconButton>
+            <IconButton onClick={next} ariaLabel="Next" size={36}>→</IconButton>
           </div>
 
           <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 40 }}>
