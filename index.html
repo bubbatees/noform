@@ -152,6 +152,67 @@
     ::-webkit-scrollbar-thumb:hover { background: var(--border-3); }
 
     #root { min-height: 100vh; }
+
+    /* ── Hero: cap image at 50vw on wide screens ── */
+    @media (min-width: 1200px) {
+      .hero-bg {
+        top: 0 !important; bottom: 0 !important;
+        left: 50% !important; right: auto !important;
+        transform: translateX(-50%) !important;
+        width: 50vw !important;
+        background-position: center center !important;
+      }
+    }
+
+    /* ── Services / Portfolio grids: max 3 cols ── */
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+    .grid-3col-sm {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    @media (max-width: 860px) {
+      .grid-3col   { grid-template-columns: repeat(2, 1fr) !important; }
+      .grid-3col-sm { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 560px) {
+      .grid-3col   { grid-template-columns: 1fr !important; }
+      .grid-3col-sm { grid-template-columns: 1fr !important; }
+    }
+
+    /* ── Nav: two-row stack on mobile ── */
+    @media (max-width: 780px) {
+      .nf-nav {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        padding: 14px 24px !important;
+      }
+      .nav-links {
+        gap: 16px !important;
+        flex-wrap: wrap !important;
+      }
+    }
+
+    /* ── Carousel: single full-width image on mobile ── */
+    @media (max-width: 700px) {
+      .carousel-grid { grid-template-columns: 1fr !important; }
+      .carousel-side { display: none !important; }
+    }
+
+    /* ── À la carte: single column on mobile ── */
+    @media (max-width: 640px) {
+      .alacarte-grid { grid-template-columns: 1fr !important; }
+      .alacarte-row  { border-right: none !important; }
+    }
   </style>
 
   <!-- React + Babel for JSX -->
@@ -341,7 +402,7 @@
       }, []);
 
       return (
-        <nav style={{
+        <nav className="nf-nav" style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
           display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "22px clamp(24px, 4vw, 48px)",
@@ -359,9 +420,7 @@
             <Wordmark />
           </a>
 
-          {/* Desktop nav */}
-          <div style={{ display: "flex", gap: 40, alignItems: "center" }}
-               className="nav-desktop">
+          <div className="nav-links" style={{ display: "flex", gap: 40, alignItems: "center" }}>
             {items.map(it => (
               <a key={it.id}
                 href={`#${it.id}`}
@@ -637,16 +696,17 @@
     const Hero = ({ onBriefOpen, headline = "Efficiency meets taste.", sub = "AI-enhanced creative production with human direction." }) => {
       const lines = headline.split("\n");
       return (
-        <section style={{
-          position: "relative", minHeight: "100vh",
-          paddingTop: 100,
+        <section className="hero-section" style={{
+          position: "relative",
+          height: "60vh", minHeight: "380px",
+          paddingTop: "clamp(70px, 8vh, 100px)",
           paddingLeft: "clamp(24px, 4vw, 48px)",
           paddingRight: "clamp(24px, 4vw, 48px)",
-          paddingBottom: 80,
+          paddingBottom: 48,
           background: "var(--bg-0)", overflow: "hidden",
           display: "flex", flexDirection: "column", justifyContent: "center",
         }}>
-          <div style={{
+          <div className="hero-bg" style={{
             position: "absolute", inset: 0,
             backgroundImage: "url(assets/imagery/hero.jpeg)",
             backgroundSize: "cover",
@@ -740,12 +800,10 @@
 
     const ServicesSection = () => (
       <section style={{ padding: "120px clamp(24px, 4vw, 48px)", background: "var(--bg-1)" }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: 24,
-          maxWidth: 1480, margin: "0 auto",
-        }}>
+        <div style={{ marginBottom: 56 }}>
+          <EyebrowHeadline eyebrow="What we make" headline="Our services." align="center"/>
+        </div>
+        <div className="grid-3col">
           {SERVICES.map((s, i) => (
             <ServiceTile key={i} {...s}/>
           ))}
@@ -821,7 +879,7 @@
           }}>
             <IconButton onClick={prev} ariaLabel="Previous" size={56}>←</IconButton>
 
-            <div style={{
+            <div className="carousel-grid" style={{
               flex: 1,
               display: "grid", gridTemplateColumns: "1fr 1.6fr 1fr", gap: 20,
               alignItems: "center",
@@ -831,14 +889,15 @@
                 const p = PORTFOLIO[i];
                 const isCenter = off === 0;
                 return (
-                  <CarouselSlide
-                    key={off + "-" + i}
-                    img={p.img}
-                    title={p.title}
-                    category={p.category}
-                    isCenter={isCenter}
-                    onClick={!isCenter ? () => setIdx(i) : undefined}
-                  />
+                  <div key={off + "-" + i} className={isCenter ? undefined : "carousel-side"}>
+                    <CarouselSlide
+                      img={p.img}
+                      title={p.title}
+                      category={p.category}
+                      isCenter={isCenter}
+                      onClick={!isCenter ? () => setIdx(i) : undefined}
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -1098,6 +1157,7 @@
       const isLeftCol = idx % 2 === 0;
       return (
         <div
+          className="alacarte-row"
           style={{
             padding: "28px 32px",
             display: "grid",
@@ -1144,7 +1204,7 @@
             For brands not ready for a retainer. Each item ships in 7–14 days.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 0, borderTop: "1px solid var(--border-1)" }}>
+        <div className="alacarte-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 0, borderTop: "1px solid var(--border-1)" }}>
           {ALACARTE.map((item, i) => (
             <ALaCarteRow key={i} {...item} idx={i} onBriefOpen={onBriefOpen}/>
           ))}
@@ -1184,7 +1244,7 @@
         <PageHeader eyebrow="Portfolio" title="Selected work, 2025 – 26."
           sub="Real client deliverables. Some confidential and shown with permission."/>
         <section style={{ padding: "0 clamp(24px, 4vw, 48px) 120px", background: "var(--bg-1)" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16, maxWidth: 1400, margin: "0 auto" }}>
+          <div className="grid-3col-sm">
             {PORTFOLIO_FULL.map((p, i) => (
               <div key={i} style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden", background: "var(--bg-2)" }}>
                 <div style={{
