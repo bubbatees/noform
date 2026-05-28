@@ -153,13 +153,13 @@
 
     #root { min-height: 100vh; }
 
-    /* ── Hero: cap image at 60% device screen width on wide screens ── */
+    /* ── Hero: fixed 1500px image width on wide screens ── */
     @media (min-width: 48em) {
       .hero-bg {
         top: 0 !important; bottom: 0 !important;
         left: 50% !important; right: auto !important;
         transform: translateX(-50%) !important;
-        width: min(60vw, var(--screen-w60, 60vw)) !important;
+        width: 1500px !important;
         background-position: center center !important;
       }
     }
@@ -706,9 +706,6 @@
 
     const Hero = ({ onBriefOpen, headline = "Efficiency meets taste.", sub = "AI-enhanced creative production with human direction." }) => {
       const lines = headline.split("\n");
-      React.useEffect(() => {
-        document.documentElement.style.setProperty('--screen-w60', Math.round(window.screen.width * 0.6) + 'px');
-      }, []);
       return (
         <section className="hero-section" style={{
           position: "relative",
